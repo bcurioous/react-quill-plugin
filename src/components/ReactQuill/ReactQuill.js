@@ -1,27 +1,22 @@
-import React from 'react';
-// Styled components 💅 is library that allows you create components easily and
-// style them, css-in-js style. It's totally optional, but I prefer to use it
-// to build things quickly and have them look great every step of the way.
-import styled from 'styled-components';
+import React, { useEffect, useRef } from 'react';
+import Quill from 'quill';
+// import Quill from './quill';
 
-// Style components take CSS in a template string. Even Sass functions with work!
-// Each element is a property of styled, like h3, p, div, etc...
-const ReactQuillWrapper = styled.button`
-	border-radius: 8px;
-	color: #fff;
-	background: mediumvioletred;
-	padding: 8px 15px;
-	border: none;
-	outline: none;
-`;
+import './quill.core.css';
+import './quill.snow.css';
 
-// Components are functions, and they must start with a capital letter
-function ReactQuill(props) {
-	// {...props} uses the the ES6 spread operator to send any props you may pass
-	// along without changing any of the contents. This is basically just creating
-	// a copy to pass along
-	return <ReactQuillWrapper {...props}>{props.children}</ReactQuillWrapper>;
+// https://github.com/quilljs/webpack-example/blob/master/app.js
+export default function ReactQuill(props) {
+	const quillRef = useRef(null);
+
+	useEffect(() => {
+		console.log('quill ref  :: ', quillRef);
+		const quill = new Quill(quillRef.current, {
+			...props.options,
+		});
+
+		console.log('quill', quill);
+	});
+
+	return <div ref={quillRef} />;
 }
-
-// This export will be picked up in ./index.js
-export default ReactQuill;
