@@ -4,3 +4,4 @@
 // different tech like TypeScript
 export { default as Button } from './Button';
 export { default as ReactQuill } from './ReactQuill';
+export { default as ReactAnnotations } from './ReactAnnotations';

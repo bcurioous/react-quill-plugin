@@ -8,7 +8,6 @@
 		"start": "npm run storybook",
 		"build": "webpack --mode production",
 		"storybook": "start-storybook -p 9001",
-
     "docz:dev": "docz dev",
     "docz:build": "docz build"
   },
